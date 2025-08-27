@@ -39,4 +39,4 @@ Um projeto didático para demonstrar conceitos de segurança e funcionalidades b
 
 1. Clone este repositório:  
 ```bash
-git clone https://github.com/seuusuario/maze-bank.git
+git clone https://github.com/DraxOutz/maze-bank.git
