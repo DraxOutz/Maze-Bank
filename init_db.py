@@ -1,12 +1,11 @@
 import sqlite3
+import os
 
 # conecta (cria se não existir)
 conn = sqlite3.connect("database.db")
-
-# cria um cursor pra executar SQL
 cursor = conn.cursor()
 
-# cria tabela de usuáriosarru
+# cria tabela se não existir
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,7 +15,21 @@ CREATE TABLE IF NOT EXISTS usuarios (
 )
 """)
 
+print(os.path.abspath("database.db"))
+
+# adiciona coluna ultimo_acesso se não existir
+try:
+    cursor.execute("ALTER TABLE usuarios ADD COLUMN ultimo_acesso TEXT DEFAULT '0000-00-00 00:00:00'")
+except sqlite3.OperationalError:
+    pass  # coluna já existe
+
+# adiciona coluna tentativa_de_acesso se não existir
+try:
+    cursor.execute("ALTER TABLE usuarios ADD COLUMN tentativa_de_acesso TEXT DEFAULT '0000-00-00 00:00:00'")
+except sqlite3.OperationalError:
+    pass  # coluna já existe
+
 conn.commit()
 conn.close()
 
-print("Banco criado com sucesso 🚀")
+print("Banco atualizado/criado com sucesso 🚀")
