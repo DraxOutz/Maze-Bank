@@ -30,8 +30,8 @@ Um projeto didático para demonstrar conceitos de segurança e funcionalidades b
 
 - Python  
 - Flask  
-- SQLite (ou outro banco de dados leve)  
-- Bibliotecas de criptografia (ex.: `hashlib`)  
+- SQLite  
+- Bibliotecas de criptografia (`hashlib`)  
 
 ---
 
