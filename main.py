@@ -7,7 +7,7 @@ print(Login, Cadastro)
 app = Flask(__name__)
 
 # Secret key usada para assinar sessões (cookies)
-app.secret_key = "a1b2c3d4e5f6g7h8i9j0klmnopqrstuvwxyz1234567890"
+app.secret_key = "a1b2c3d4e5f6g7h8i9j0klmnopqrstuvwxyz12345678902"
 
 # Nome do site/banco
 Website_Name = "Maze Bank"
@@ -25,6 +25,7 @@ Mensagens = {
     6: "Informe um endereço de e-mail válido.",
     7: "As senhas inseridas não coincidem.",
     8: "Máximo de tentativas atingido. Tente mais tarde.",
+    9: "Conta temporariamente bloqueada. Tente mais tarde.",
 }
 
 # ==========================
@@ -130,9 +131,11 @@ def conta():
     logado = "usuario" in session
     print(logado)
     if not logado:
-     return redirect(url_for("/"))
+     return redirect(url_for("homepage"))
     else:
-     return render_template("conta.html", Tipo="Conta", Website_Name=Website_Name)
+     DefaulName = "John Doe"
+     DefaulName = session["usuario"] 
+     return render_template("conta.html", Tipo="Conta", Website_Name=Website_Name,Nome=DefaulName)
 
 # ==========================
 # EXECUÇÃO DO FLASK
