@@ -2,6 +2,7 @@ import sqlite3  # importa a sessão do Flask
 import re                  # usado para validação de email e senha
 from criptografia import Criptografar  # função para criptografar senhas
 from flask import session
+from datetime import datetime, timedelta
 
 X = 0  # variável global usada para retornar códigos de erro (não ideal, mas funciona)
 
@@ -80,30 +81,63 @@ def Check_Password(Senha):
 # ==========================
 # CRIAÇÃO DE USUÁRIO NO BANCO
 # ==========================
-def Create_User(Email, Senha):
-    """
-    Cria um novo usuário no banco de dados.
-    Criptografa a senha antes de salvar.
-    Inicializa saldo com 0.
-    """
+
+def Atualizar_Ultimo_Acesso(Email):
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    
+    agora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # corrigido
+    cursor.execute(
+        "UPDATE usuarios SET ultimo_acesso = ? WHERE email = ?",
+        (agora, Email)
+    )
+    conn.commit()
+    conn.close()
+
+    
+def Atualizar_Ultima_Tentativa_De_Senha(Email):
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    
+    agora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # corrigido
+    cursor.execute(
+        "UPDATE usuarios SET tentativa_de_acesso = ? WHERE email = ?",
+        (agora, Email)
+    )
+    conn.commit()
+    conn.close()
+
+
+def Pegar_Ultimo_Acesso(Email):
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT tentativa_de_acesso FROM usuarios WHERE email = ?", (Email,))
+    resultado = cursor.fetchone()  # pega a primeira linha retornada
+    
+    conn.close()
+    
+    if resultado:
+        return resultado[0]  # retorna a string do horário
+    else:
+        return None  # usuário não encontrado
+
+def Create_User(Email, Senha):  
     conn = sqlite3.connect("database.db")
     cursor = conn.cursor()
     
     try:
-        # Criptografa a senha
         Senha = Criptografar(Senha)
+        Horario = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # corrigido
         
-        # Insere o usuário no banco
         cursor.execute(
-            "INSERT INTO usuarios (email, senha, saldo) VALUES (?, ?, ?)",
-            (Email, Senha, 0)
+            "INSERT INTO usuarios (email, senha, saldo, ultimo_acesso, tentativa_de_acesso) VALUES (?, ?, ?, ?, ?)",
+            (Email, Senha, 0, Horario, Horario)  # pode usar Horario nas duas colunas
         )
         conn.commit()
         print("Usuário cadastrado com sucesso")
-
     except sqlite3.IntegrityError:
         print("Email já cadastrado")
-
     finally:
         conn.close()
 
@@ -124,7 +158,7 @@ def Login(Email, Senha):
         5 -> máximo de tentativas atingido
     """
     if "tentativas" not in session:
-        session["tentativas"] = 5    
+        session["tentativas"] = 3    
         # Não é eficaz contra ataques hackers, mas dá uma noção de como funciona a proteção contra repetição de senha incorreta
         # A forma eficaz para isso é salvar as tentativas de acesso no banco de dados e puxar-lo para melhor execução
         # Juntamente com isso coloque o hórario de acesso, ao passar o tempo minimo resetar as tentativas de acesso
@@ -139,7 +173,18 @@ def Login(Email, Senha):
         session["tentativas"] -= 1
     
     if session["tentativas"] < 0:
-        X = 5
+        X = 8
+    Atualizar_Ultima_Tentativa_De_Senha(Email)
+    
+    horario = Pegar_Ultimo_Acesso(Email)
+    if horario:
+     print(f"Último acesso do {Email}: {horario}")
+    
+    agora = datetime.now()  # corrigido
+    ultimo_acesso = datetime.strptime(horario, "%Y-%m-%d %H:%M:%S")
+    
+    if agora - ultimo_acesso < timedelta(minutes=30):
+        X = 9
     
     return X
 
