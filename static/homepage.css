@@ -1,0 +1,269 @@
+body {
+    overflow-y: scroll;
+    height: 250vh;
+     width: 100vw;
+     overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-frame {
+    background-color: rgb(0, 0, 0);
+    height: 500px;
+    width: 100vw;
+    position: relative;
+    left: -5;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 70px;    
+     z-index: 1;
+     overflow: hidden;
+}
+
+.botao-card:hover {
+  border: 2px solid #ff0000;
+  
+}
+
+
+.botao-card {
+
+ background: url("images/logo.png") no-repeat left 10px top 15px;
+    background-size: 30px; /* tamanho do ícone */
+    padding-right: 40px; /* dá espaço pro ícone não ficar em cima do texto */
+
+  display: block;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 16px;
+  transition: 0.2s;
+  margin-right: 25px;
+  border: 2px solid #c9c9c9;
+  color: #646464;
+  height: 150px;
+  width: 150px;
+  max-width: 250px; /* largura do card */
+}
+
+.botao-card.boleto {
+     background: url("images/boleto.png") no-repeat left 10px top 15px;
+      background-size: 30px; /* tamanho do ícone */
+}
+
+.botao-card.card {
+     background: url("images/credit-card.png") no-repeat left 10px top 15px;
+      background-size: 30px; /* tamanho do ícone */
+}
+
+.botao-card.app {
+     background: url("images/app.png") no-repeat left 10px top 15px;
+      background-size: 30px; /* tamanho do ícone */
+}
+
+.botao-card.fatura {
+     background: url("images/fatura.png") no-repeat left 10px top 15px;
+      background-size: 30px; /* tamanho do ícone */
+}
+
+.botao-card.comprovante {
+     background: url("images/comprovante.png") no-repeat left 10px top 15px;
+      background-size: 30px; /* tamanho do ícone */
+}
+
+.botao-card.atendimento {
+     background: url("images/central-de-ajuda.png") no-repeat left 10px top 15px;
+      background-size: 30px; /* tamanho do ícone */
+}
+
+.botao-card.boleto {
+     background: url("images/email.png") no-repeat left 10px top 15px;
+      background-size: 30px; /* tamanho do ícone */
+}
+
+
+.daily-frame {
+    height: 250px;
+    width: 100%;
+    position: relative;
+    left: -5;
+    display: flex;
+    flex-direction: column; /* <<< ESSA LINHA é a chave */
+    align-items: center;
+    justify-content: flex-start; /* começa de cima */
+    top: 150px;    
+    z-index: 2;
+    overflow: hidden;
+}
+
+.daily-frame h1 {
+  margin-bottom: 20px; /* espaço entre título e botões */
+  font-size: 22px;
+  color: #333;
+  width: 64%;
+ text-align: left;
+}
+
+.daily-frame h2 {
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.daily-frame p {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+
+
+.cards {
+  display: flex;          /* deixa os cards lado a lado */
+  gap: 12px;              /* espaço entre eles */
+  justify-content: center;/* centraliza na tela */
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+transition: transform 0.8s ease;
+ transform: translateX(100%);
+  z-index: 1;
+}
+
+.banner.active {
+  z-index: 2;
+   transform: translateX(0); /* visível */
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 5%;         /* texto à esquerda */
+    transform: translateY(-50%); /* centraliza verticalmente */
+    color: white;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    width: 400px;
+    z-index: 3;
+}
+
+.navbar {   
+    background-color: #ad0000;
+    display: flex;
+    align-items: center;
+     padding: 10px 20px;
+     position: fixed; 
+     top: 0;  
+     left: 0;
+      justify-content: center;
+     height: 65px;
+     width: 100%; 
+      z-index: 2
+}
+
+.navbar img {
+    width: 50px;
+    margin-right: 25px; /* espaço entre a imagem e os links */
+}
+
+.btn {
+ width: 150px;
+    height: 35px;
+ border-radius: 15px;
+    border: 1px solid #fff;
+    cursor: pointer;        
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+     margin-right: 20px;
+     line-height: 35px;
+     font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      text-align: center;   /* centraliza horizontalmente */
+}
+
+
+
+/* Container do dropdown */
+.dropdown {
+    position: relative;
+}
+
+/* Esconde o checkbox */
+.dropdown input {
+    display: none;
+}
+
+/* Label do dropdown como botão */
+.drop-label {
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: space-between;
+     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+h2 {
+     font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+     font-family: Arial, Helvetica, sans-serif;
+}
+
+img.arrow {
+    width: 15px;
+}
+
+/* Seta */
+.arrow {
+    transition: transform 0.3s ease;
+     margin-left: 10px;
+     
+}
+
+.dropdown-content {
+    max-height: 0;              /* começa escondido */
+    overflow: hidden;           /* esconde o conteúdo que ultrapassa */
+    position: fixed;            /* fixa em relação à tela inteira */
+    top: 85px;                  /* altura da navbar */
+    left: 0;                    /* borda esquerda da tela */
+    width: 100vw;               /* largura total da tela */
+    background-color: #e7e7e7;
+    color: #000;
+    padding: 0 20px;            /* padding inicial 0 para animar */
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    z-index: 1000;
+    border-radius: 0 0 5px 5px;
+     display: flex; 
+     justify-content: flex-start;
+      gap: 40px;  
+}
+
+/* Quando o dropdown estiver ativo (ex: checkbox marcado) */
+.dropdown input:checked + .drop-label + .dropdown-content {
+    max-height: 800px;          /* altura final, ajusta conforme conteúdo */
+    padding: 20px;              /* padding final */
+}
+/* Gira a seta quando aberto */
+.dropdown input:checked + .drop-label .arrow {
+    transform: rotate(180deg);
+}

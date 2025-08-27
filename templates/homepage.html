@@ -1,0 +1,186 @@
+{% extends "base.html" %}  <!-- Herda o template base.html. Todo o conteúdo do base.html estará disponível aqui -->
+
+{% block title %}  <!-- Início do bloco 'title', que sobrescreve o bloco correspondente em base.html -->
+{{ Tipo }} - {{ Website_Name }}  <!-- Mostra o título da página usando as variáveis enviadas pelo Flask -->
+{% endblock %}  <!-- Fim do bloco 'title' -->
+
+{% block content %}  <!-- Início do bloco 'content', que sobrescreve o bloco correspondente em base.html -->
+
+<head> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+</head>
+
+
+
+<nav class="navbar">
+    <img src="{{ url_for('static', filename='images/white_logo.png') }}" class="logo">
+
+    <div class="dropdown">
+        <input type="checkbox" id="drop1">
+        <label for="drop1" class="drop-label">Para você <img  src="{{ url_for('static', filename='images/arrow.png') }}" class="arrow" ></label>
+
+       <div class="dropdown-content">
+    <div>
+          <h2>Conheça nossos produtos</h2>
+            <p>Empréstimos e financiamento</p>
+            <p>Conta-corrente</p>
+             <p>Cartões de crédito</p>
+              <p>Investimentos</p>
+               <p>Título de capitalização</p>
+                <p>Consórcio</p>
+                 <p>Seguros</p>
+                  <p>Câmbio e viagem</p>
+                   <p>Correspondente no país</p>
+    </div>
+    
+    <div>
+        <h2>Resolva</h2>
+        <p>Boletos</p>
+        <p>Comprovantes</p>
+        <p>Cadastro positivo</p>
+         <p>Portabilidade de crédito</p>
+          <p>Portabilidade de salário</p>
+           <p>Sistema de informação de crédito</p>
+              <p>Renegociação de dívidas</p>   
+    </div>
+</div>
+
+    </div>
+
+     <div class="dropdown">
+        <input type="checkbox" id="drop2">
+        <label for="drop2" class="drop-label">Para empresas <img  src="{{ url_for('static', filename='images/arrow.png') }}" class="arrow" ></label>
+
+       <div class="dropdown-content">
+    <div>
+          <h2>Conheça</h2>
+            <p>Conta jurídica</p>
+            <p>Roxinha</p>
+             <p>Empréstimo empresarial</p>
+              <p>Pagamentos e recebimentos</p>
+               <p>Cartão empresarial</p>
+                <p>Seguros</p>
+                 <p>Câmbio e comércio exterior</p>
+                  <p>Investimentos para empresas</p>
+                   <p>Consórcio</p>
+    </div>
+    
+    <div>
+        <h2>E mais</h2>
+        <p>Renegociação</p>
+        <p>Tarifas</p>
+        <p>Segurança e fraudes</p>
+         <p>Boletos</p>
+          <p>Comprovantes</p>
+           <p>Blog Transfer Empresas</p> 
+    </div>
+</div>
+
+    </div>
+
+     <div class="dropdown">
+        <input type="checkbox" id="drop3">
+        <label for="drop3" class="drop-label">Ajuda <img  src="{{ url_for('static', filename='images/arrow.png') }}" class="arrow" ></label>
+
+       <div class="dropdown-content">
+    <div>
+          <h2>Central de ajuda</h2>
+            <p>Ajuda para você</p>
+            <p>Ajuda para empresas</p>
+             <p>Ajuda para poder público</p>
+    </div>
+    
+    <div>
+        <h2>Dúvidas frequentes</h2>
+        <p>iToken</p>
+        <p>Renegociação</p>
+        <p>Cartão virtual</p>
+         <p>Fatura</p>
+          <p>Limite</p>
+    </div>
+    
+</div>
+
+
+
+    </div>
+
+
+
+    <a href="{{ url_for('cadastro') }}" class="btn">Abra sua conta</a>
+</nav>
+
+<body>
+
+    
+
+<div class="home-frame">
+    <div class="banner-container">
+        <img src="{{ url_for('static', filename='images/imagem_de_fundo.png') }}" class="banner active" id="banner1">
+        <img src="{{ url_for('static', filename='images/imagem_de_fundo2.png') }}" class="banner" id="banner2">
+        <img src="{{ url_for('static', filename='images/imagem_de_fundo3.png') }}" class="banner" id="banner3">
+        <div class="text-overlay">
+            <h1 id="banner-title">Não se preocupe com as contas!</h1>
+            <p id="banner-text">Estamos aqui para te ajudar a planejar seus gastos com soluções que realmente funcionam para você.</p>
+        </div>
+    </div>
+</div>
+
+<div class="daily-frame">
+  <h1>Resolva as necessidades diárias</h1>
+
+  <!-- container dos cards -->
+  <div class="cards">
+   <a href="{{ url_for('login') }}" class="botao-card boleto">
+      <div class="conteudo">
+        <h2 class="titulo">Boleto</h2>
+        <p class="descricao">Emita 2ª via de boletos Maze</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('login') }}" class="botao-card card">
+      <div class="conteudo">
+        <h2 class="titulo">Desbloqueio de cartão</p>
+        <p class="descricao">Saiba como fazer</p>
+      </div>
+    </a>
+
+
+    <a href="{{ url_for('login') }}" class="botao-card app">
+      <div class="conteudo">
+        <h2 class="titulo">Aplicativos</h2>
+        <p class="descricao">Baixe os apps do banco Maze</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('login') }}" class="botao-card fatura">
+      <div class="conteudo">
+        <h2 class="titulo">Fatura digital</h2>
+        <p class="descricao">Receba a fatura do seu cartão</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('login') }}" class="botao-card comprovante">
+      <div class="conteudo">
+        <h2 class="titulo">Comprovantes</h2>
+        <p class="descricao">Gere uma 2ª via do comprovante</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('login') }}" class="botao-card atendimento">
+      <div class="conteudo">
+        <h2 class="titulo">Atendimento</h2>
+        <p class="descricao">Conheça nossos canais de ajuda</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+</body>
+
+<script src="{{ url_for('static', filename='homeanimation.js') }}" defer></script>
+
+
+
+{% endblock %}  <!-- Fim do bloco 'content' -->

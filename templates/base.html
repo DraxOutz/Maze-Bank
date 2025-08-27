@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ Tipo | default("Página") }} - {{ Website_Name | default("Meu Site") }}</title>
+   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+    {% block content %}
+
+
+
+    <!-- Conteúdo padrão -->
+
+
+    {% endblock %}
+</body>
+</html>

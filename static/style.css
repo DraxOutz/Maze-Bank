@@ -1,0 +1,106 @@
+
+body {
+    height: 100vh;
+     background: linear-gradient(to bottom, #ad0000, #6b0000);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+hr {
+  border: none;           /* remove a borda padrão */
+  height: 1px;            /* altura da linha */
+  background-color: #000000; /* cor da linha */
+  margin: 20px 0;         /* espaço acima e abaixo */
+}
+
+
+.login-frame {
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+     width: 400px;
+     height: 650px;
+     padding: 30px;
+}
+
+.login-frame input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none; /* tira as bordas */
+    border-bottom: 1px solid #ccc; /* coloca só uma linha embaixo */
+    outline: none; /* tira a borda azul quando clica */
+
+}
+
+#Erro {
+    color: red;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0px; 
+}
+
+.login-frame input[type="password"] {
+    background: url("images/padlock.png") no-repeat right 10px center;
+    background-size: 20px; /* tamanho do ícone */
+    padding-right: 40px; /* dá espaço pro ícone não ficar em cima do texto */
+}
+
+.login-frame input[type="text"] {
+    background: url("images/email.png") no-repeat right 10px center;
+    background-size: 20px; /* tamanho do ícone */
+    padding-right: 40px; /* dá espaço pro ícone não ficar em cima do texto */
+}
+
+.login-frame h1 {
+     font-size: 26px;
+     font-family: Arial, Helvetica, sans-serif;
+     text-align: le;
+      margin-bottom: 60px; 
+}
+
+
+.login-frame h2 {
+     font-size: 14px;
+    width: 90%;
+     text-decoration: none;
+     font-family: Arial, Helvetica, sans-serif;
+     text-align: right;
+}
+
+a {
+     text-decoration: none;
+     text-align: right;
+      color: #ad0000;
+}
+
+.login-frame a {
+     text-decoration: none;
+     text-align: right;
+      color: #ad0000;
+}
+
+.texto {
+    width: 90%;
+    text-align: left !important;
+    margin-top: 5px; 
+     margin-bottom: 0px; 
+}
+
+
+
+.login-frame button {
+    width: 325px;
+    height: 60px;
+    padding: 10px;
+    border: none;
+     margin-bottom: 20px; 
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-top: 20px; 
+    cursor: pointer;
+}
