@@ -12,8 +12,13 @@ Um projeto didático para demonstrar conceitos de segurança e funcionalidades b
 - ✅ Cadastro de novos usuários  
 - ✅ Criptografia **hash** de senhas  
 - ✅ Tentativas de acesso com **bloqueio temporário**  
-- ✅ Transações bancárias simuladas  
-- ✅ Gerenciamento de usuários  
+- ✅ Gerenciamento de usuários
+- ❌ Transações bancárias simuladas  
+- ❌ Autentificação de 2 fatores
+- ❌ Recuperação de senha
+- ❌ Notificações de login suspeito
+- ❌ Registro de logs de transações
+- ❌ Edição de perfil
 
 ---
 
